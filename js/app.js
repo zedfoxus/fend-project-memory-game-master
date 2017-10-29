@@ -1,9 +1,3 @@
-//Function to show cards as they are clicked
-$('.card').on('click', function() {
-  $(this).toggleClass("open show");
-});
-
-
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -25,6 +19,25 @@ function shuffle(array) {
 
     return array;
 }
+
+//Create array of 16 cards
+let cardArray = $('.card').map(function(){
+  return $(this).text();
+});
+
+// Shuffle the 16 cards using function provided
+$(document).ready(function(){
+  shuffle(cardArray);
+});
+
+//Loop through each card creating html
+
+
+
+//Function to show cards as they are clicked
+$('.card').on('click', function() {
+  $(this).toggleClass("open show");
+});
 
 
 /*
