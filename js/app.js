@@ -16,27 +16,32 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
-    return array;
 }
 
 //Create array of 16 cards
 let cardArray = $('.card').map(function(){
-  return $(this).text();
+  return $(this);
 });
 
 // Shuffle the 16 cards using function provided
 $(document).ready(function(){
+ 
+  // clear the deck
+  $('.deck').html('');
+
+  // shuffle the array
   shuffle(cardArray);
-});
 
-//Loop through each card creating html
+  // add the shuffled cards back to the deck
+  for(li of cardArray) {
+    $('.deck').append(li);
+  }
 
+  //Function to show cards as they are clicked
+  $('.card').on('click', function() {
+    $(this).toggleClass("open show");
+  });
 
-
-//Function to show cards as they are clicked
-$('.card').on('click', function() {
-  $(this).toggleClass("open show");
 });
 
 
